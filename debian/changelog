@@ -1,0 +1,33 @@
+ros-indigo-stage-ros (1.7.2-0trusty) trusty; urgency=high
+
+  * Changed default GUI window size to 600x400
+  * Added velocity to ground truth odometry
+  * Fixed tf (yaw component) for the base_link->camera transform.
+  * Fixed ground truth pose coordinate system
+
+ -- William Woodall <william@osrfoundation.org>  Thu, 19 Sep 2013 07:00:00 -0000
+
+ros-indigo-stage-ros (1.7.1-0trusty) trusty; urgency=high
+
+  * Fixing warnings
+  * Small fixes
+  * Added RGB+3D-sensor interface (Primesense/Kinect/Xtion).
+    * Publishes CameraInfo, depth image, RGBA image, tf (takes world-file pantilt paremeter into account)
+    * Supports the "old" configuration (laser+odom) as well as camera+odom, laser+camera+odom and odom-only.
+    Fixed laser transform height (previously was hardcoded at 0.15, now it takes robot height into account).
+  * Introduced changes from https://github.com/rtv/Stage/issues/34 with some changes (does not require lasers to be present and works without cameras).
+
+ -- William Woodall <william@osrfoundation.org>  Fri, 30 Aug 2013 07:00:00 -0000
+
+ros-indigo-stage-ros (1.7.0-0trusty) trusty; urgency=high
+
+  * Initial move over from old repository: https://code.ros.org/svn/ros-pkg/stacks/stage
+  * Catkinized
+  * Stage itself is released as a third party package now
+  * Had to disable velocities in the output odometry as Stage no longer implements it internally.
+  * Updated rostest
+  * Updated rviz configurations
+
+ -- William Woodall <william@osrfoundation.org>  Thu, 27 Jun 2013 19:15:07 -0700
+
+

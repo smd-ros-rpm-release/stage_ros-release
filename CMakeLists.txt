@@ -6,6 +6,18 @@ find_package(catkin REQUIRED COMPONENTS geometry_msgs nav_msgs roscpp rostest se
 find_package(Boost REQUIRED COMPONENTS system thread)
 
 find_package(FLTK REQUIRED)
+if(FLTK_FOUND)
+  # FindFLTK.cmake doesn't populate FLTK_INCLUDE_DIRS on some systems,
+  # so we try to use FLTK_INCLUDE_DIR if we need to.
+  if("${FLTK_INCLUDE_DIRS}" STREQUAL "")
+    set(FLTK_INCLUDE_DIRS "${FLTK_INCLUDE_DIR}")
+  endif()
+  message(status "FLTK_LIBRARIES=" ${FLTK_LIBRARIES})
+  message(status "FLTK_INCLUDE_DIR=" ${FLTK_INCLUDE_DIR})
+  message(status "FLTK_INCLUDE_DIRS=" ${FLTK_INCLUDE_DIRS})
+else()
+  message(fatal_error "FLTK not found...aborting!")
+endif()
 
 set(Stage_DIR cmake)
 find_package(Stage REQUIRED)
@@ -26,7 +38,11 @@ catkin_package(
 
 # Declare a cpp executable
 add_executable(stageros src/stageros.cpp)
-target_link_libraries(stageros ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${FLTK_LIBRARIES} ${Stage_LIBRARIES})
+set(${PROJECT_NAME}_extra_libs "")
+if(UNIX AND NOT APPLE)
+  set(${PROJECT_NAME}_extra_libs dl)
+endif()
+target_link_libraries(stageros ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${FLTK_LIBRARIES} ${Stage_LIBRARIES} ${${PROJECT_NAME}_extra_libs})
 if(catkin_EXPORTED_TARGETS)
 	add_dependencies(stageros ${catkin_EXPORTED_TARGETS})
 endif()

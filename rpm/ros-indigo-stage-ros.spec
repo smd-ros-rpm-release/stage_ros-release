@@ -9,7 +9,6 @@ URL:            http://ros.org/wiki/stage_ros
 Source0:        %{name}-%{version}.tar.gz
 
 Requires:       boost-devel
-Requires:       fltk-fluid
 Requires:       ros-indigo-geometry-msgs
 Requires:       ros-indigo-nav-msgs
 Requires:       ros-indigo-roscpp
@@ -18,7 +17,6 @@ Requires:       ros-indigo-stage
 Requires:       ros-indigo-std-msgs
 Requires:       ros-indigo-tf
 BuildRequires:  boost-devel
-BuildRequires:  fltk-devel
 BuildRequires:  ros-indigo-catkin
 BuildRequires:  ros-indigo-geometry-msgs
 BuildRequires:  ros-indigo-nav-msgs

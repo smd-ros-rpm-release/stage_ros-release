@@ -9,7 +9,6 @@ URL:            http://ros.org/wiki/stage_ros
 Source0:        %{name}-%{version}.tar.gz
 
 Requires:       boost-devel
-Requires:       fltk-fluid
 Requires:       ros-jade-geometry-msgs
 Requires:       ros-jade-nav-msgs
 Requires:       ros-jade-roscpp
@@ -18,7 +17,6 @@ Requires:       ros-jade-stage
 Requires:       ros-jade-std-msgs
 Requires:       ros-jade-tf
 BuildRequires:  boost-devel
-BuildRequires:  fltk-devel
 BuildRequires:  ros-jade-catkin
 BuildRequires:  ros-jade-geometry-msgs
 BuildRequires:  ros-jade-nav-msgs
